@@ -5,6 +5,7 @@ import './index.css';
 import Header from './components/Header/Header';
 import App from './pages/Homepage/App';
 import reportWebVitals from './reportWebVitals';
+import Sidebar from './components/Sidebar/Sidebar';
 
 const contenair = document.getElementById('root');
 const root = createRoot(contenair);
@@ -13,6 +14,7 @@ root.render(
   <React.StrictMode>
     <Router>
       <Header />
+      <Sidebar />
       <Routes>
         <Route path="/" element={<App />} />
       </Routes>

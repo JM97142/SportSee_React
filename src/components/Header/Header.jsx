@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom'
 
-import Logo from '../../assets/Group (1).svg'
+import Logo from '../../assets/logo-img.svg'
 import logoName from '../../assets/logo-name.svg'
 import '../Header/header.css'
 
