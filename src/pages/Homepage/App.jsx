@@ -1,5 +1,7 @@
 import './App.css';
+// Components
 import UserActivity from '../../components/userActivity/UserActivity';
+import UserAverageSessions from '../../components/userAverageSessions/UserAverageSessions';
 
 function App() {
   const userId = '12'
@@ -7,6 +9,7 @@ function App() {
   return (
     <div>
       <UserActivity userId={userId} />
+      <UserAverageSessions userId={userId} />
     </div>
   );
 }

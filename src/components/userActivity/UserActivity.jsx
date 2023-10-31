@@ -1,36 +1,36 @@
 import { useEffect, useState } from "react"
-import { getActivity } from "../api/Api"
 import { BarChart, Bar, Rectangle, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
 
+import { getActivity } from "../api/Api"
+
 function UserActivity(props) {
-    const [userData, setUserData] = useState([])
+    const [userActivity, setUserActivity] = useState([])
 
     useEffect(() => {
         fetchActivity()
     }, [])
 
     async function fetchActivity() {
-        const userInfos = await getActivity(props.userId)
+        const activityData = await getActivity(props.userId)
         const data = []
-        for (let i = 0; i < userInfos.data.sessions.length; i++) {
-            const session = userInfos.data.sessions[i]
+        for (let i = 0; i < activityData.data.sessions.length; i++) {
+            const session = activityData.data.sessions[i]
 
             const sessionFormatted = {
                 name: i + 1,
                 calories: session.calories,
                 kilogrammes: session.kilogram
             }
-
             data.push(sessionFormatted)
         }
-        setUserData(data)
+        setUserActivity(data)
     }
 
     return (
         <BarChart
             width={500}
             height={300}
-            data={userData}
+            data={userActivity}
             margin={{
                 top: 5,
                 right: 30,
