@@ -12,18 +12,7 @@ function UserActivity(props) {
 
     async function fetchActivity() {
         const activityData = await getActivity(props.userId)
-        const data = []
-        for (let i = 0; i < activityData.data.sessions.length; i++) {
-            const session = activityData.data.sessions[i]
-
-            const sessionFormatted = {
-                name: i + 1,
-                calories: session.calories,
-                kilogrammes: session.kilogram
-            }
-            data.push(sessionFormatted)
-        }
-        setUserActivity(data)
+        setUserActivity(activityData)
     }
 
     return (
@@ -46,7 +35,7 @@ function UserActivity(props) {
             <Bar dataKey="calories" fill="#8884d8" activeBar={<Rectangle fill="pink" stroke="blue" />} />
             <Bar dataKey="kilogrammes" fill="#82ca9d" activeBar={<Rectangle fill="gold" stroke="purple" />} />
         </BarChart>
-    );
+    )
 }
 
 export default UserActivity

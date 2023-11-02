@@ -12,16 +12,7 @@ function UserAverageSessions(props) {
 
     async function fetchAverageSession() {
         const averageSessionData = await getAverageSessions(props.userId)
-        const data = []
-        for (let i = 0; i < averageSessionData.data.sessions.length; i++) {
-            const session = averageSessionData.data.sessions[i]
-            const averageSessionFormatted = {
-                name: session.day,
-                durée: session.sessionLength
-            }
-            data.push(averageSessionFormatted)
-        }
-        setUserAverageSession(data)
+        setUserAverageSession(averageSessionData)
     }
 
     return (
@@ -37,11 +28,10 @@ function UserAverageSessions(props) {
             }}
         >
             <CartesianGrid strokeDasharray="3 3" />
-            <XAxis dataKey="name" />
+            <XAxis dataKey="day" />
             <YAxis />
             <Tooltip />
-            <Legend />
-            <Line type="monotone" dataKey="durée" stroke="#8884d8" activeDot={{ r: 8 }} />
+            <Line type="monotone" dataKey="sessionLength" stroke="#8884d8" activeDot={{ r: 8 }} />
         </LineChart>
     );
 }
