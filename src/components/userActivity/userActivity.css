@@ -1,0 +1,24 @@
+.activity-graph {
+    background-color: rgba(251, 251, 251, 1);
+    padding: 50px 20px 0px 20px;
+    position: relative;
+}
+
+.activity-graph h3 {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    color: #20253A;
+    font-size: 15px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 24px;
+}
+
+.activity-bar {
+    padding: 30px;
+}
+
+.text-legend {
+    color: rgba(116, 121, 140, 1);
+}

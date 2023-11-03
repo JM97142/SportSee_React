@@ -3,7 +3,6 @@ import { useState, useEffect } from 'react';
 // API
 import { getUser } from '../../components/api/Api';
 // Components
-import UserInfos from '../../components/UserInfo/UserInfo';
 import UserActivity from '../../components/UserActivity/UserActivity';
 import UserAverageSessions from '../../components/UserAverageSessions/UserAverageSessions';
 import UserPerformance from '../../components/UserPerformance/UserPerformance';
@@ -26,18 +25,19 @@ function App() {
     const user = await getUser()
     setUser(user)
   }
+
   return (
     <div className='home-body'>
-      <div className='graph-activity'>
+      <div className='activity-wrapper'>
         <UserActivity />
       </div>
-      <div className='graph-'>
+      <div className='average-wrapper'>
         <UserAverageSessions />
       </div>
-      <div className='graph-'>
+      <div className='performance-wrapper'>
         <UserPerformance />
       </div>
-      <div className='graph-'>
+      <div className='score-wrapper'>
         <UserScore />
       </div>
       <div className='cards-wrapper'>

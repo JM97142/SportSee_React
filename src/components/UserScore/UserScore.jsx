@@ -1,32 +1,27 @@
 import { useEffect, useState } from "react";
-import { RadialBarChart, RadialBar, Legend, ResponsiveContainer } from 'recharts';
+import { RadialBarChart, RadialBar, Legend } from 'recharts';
 
 import { getScore } from "../api/Api";
 
-function UserScore(props) {
+function UserScore() {
     const [userScore, setUserScore] = useState([])
 
     useEffect(() => {
         fetchScore()
-    }, [])
+    })
 
     async function fetchScore() {
-        const scoreData = await getScore(props.userId)
+        const scoreData = await getScore()
         setUserScore(scoreData)
 
         return (
-            <RadialBarChart
-                width={730}
-                height={250}
-                innerRadius="10%"
-                outerRadius="80%"
-                data={userScore}
-                startAngle={180}
-                endAngle={0}
-            >
-                <RadialBar minAngle={15} label={{ fill: '#666', position: 'insideStart' }} background clockWise={true} dataKey='todayScore' />
-                <Legend iconSize={10} width={120} height={140} layout='vertical' verticalAlign='middle' align="right" />
-            </RadialBarChart>
+            <div className="score-graph">
+                <h3>Score</h3>
+                <RadialBarChart startAngle={140} endAngle={500} cx='50%' cy='50%' innerRadius={70} barSize={10} outerRadius={120} data={userScore}>
+                    <RadialBar cornerRadius='50%' dataKey='todayScore' fill='#E60000' />
+                    <Legend />
+                </RadialBarChart>
+            </div>
         )
     }
 }
