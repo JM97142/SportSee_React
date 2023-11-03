@@ -1,7 +1,9 @@
 import { useEffect, useState } from "react";
-import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip } from 'recharts';
+import { LineChart, Line, XAxis, YAxis, Tooltip, Legend } from 'recharts';
 
 import { getAverageSessions } from "../api/Api";
+
+import './userAverageSessions.css'
 
 function UserAverageSessions() {
     const [userAverageSession, setUserAverageSession] = useState([])
@@ -16,23 +18,24 @@ function UserAverageSessions() {
     }
 
     return (
-        <div className="average-wrapper">
+        <div className="average-graph">
+            <h3>Durée moyenne des sessions</h3>
             <LineChart
-                width={500}
-                height={300}
+                width={258}
+                height={263}
                 data={userAverageSession}
                 margin={{
-                    top: 5,
-                    right: 30,
-                    left: 20,
-                    bottom: 5,
+                    top: 10,
+                    right: 10,
+                    left: 10,
+                    bottom: 10,
                 }}
             >
-                <CartesianGrid strokeDasharray="3 3" />
-                <XAxis dataKey="day" />
-                <YAxis />
+                <XAxis dataKey='day' stroke='#FFFFFF' opacity={0.5} tickLine={false} axisLine={false} />
+                <YAxis padding={{ top: 50 }} stroke='#FFFFFF' opacity={0.5} tickLine={false} axisLine={false} hide />
                 <Tooltip />
-                <Line type="monotone" dataKey="sessionLength" stroke="#8884d8" activeDot={{ r: 8 }} />
+                <Legend />
+                <Line type='basis' dataKey='sessionLength' stroke='#FFFFFF' opacity={0.5} dot={false} strokeWidth={2} legendType='none' />
             </LineChart>
         </div>
     );

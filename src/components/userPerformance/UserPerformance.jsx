@@ -1,10 +1,11 @@
 import { useEffect, useState } from "react"
-import { Radar, RadarChart, PolarGrid, PolarAngleAxis, PolarRadiusAxis, ResponsiveContainer, Legend } from 'recharts';
-
+import { Radar, RadarChart, PolarGrid, PolarAngleAxis, Legend } from 'recharts';
 
 import { getPerformance } from "../api/Api"
 
-function UserPerformance(props) {
+import './userPerformance.css'
+
+function UserPerformance() {
     const [userPerformance, setUserPerformance] = useState([])
 
     useEffect(() => {
@@ -19,11 +20,16 @@ function UserPerformance(props) {
     if (userPerformance.length === 0) return (<></>)
     return (
         <div className="performance-graph">
-            <RadarChart outerRadius={90} width={730} height={250} data={userPerformance}>
+            <RadarChart
+                outerRadius={90}
+                width={258}
+                height={263}
+                data={userPerformance}
+            >
                 <PolarGrid />
-                <PolarAngleAxis dataKey="kind" />
-                <PolarRadiusAxis angle={30} domain={[0, 150]} />
-                <Radar dataKey="value" stroke="#8884d8" fill="#8884d8" fillOpacity={0.6} />
+                <PolarAngleAxis dataKey='kind' stroke='#FFFFFF' fontSize={14} tickLine={false} />
+                <Radar dataKey='value' stroke='#E60000' fill='#E60000' fillOpacity={0.7} legendType='none' />
+                <Legend />
             </RadarChart>
         </div>
     )
