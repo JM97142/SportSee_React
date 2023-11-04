@@ -10,7 +10,7 @@ function UserActivity() {
 
     useEffect(() => {
         fetchActivity()
-    })
+    }, [])
 
     async function fetchActivity() {
         const activityData = await getActivity()

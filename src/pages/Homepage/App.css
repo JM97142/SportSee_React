@@ -4,3 +4,17 @@
   width: 80%;
   height: 90vh;
 }
+
+.-wrapper {
+  display: flex;
+  justify-content: space-between;
+}
+
+.activity-wrapper {
+  margin-bottom: 30px;
+}
+
+.stats-wrapper {
+  display: flex;
+  justify-content: space-between;
+}

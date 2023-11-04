@@ -1,7 +1,7 @@
 import { USER_MAIN_DATA, USER_ACTIVITY, USER_AVERAGE_SESSIONS, USER_PERFORMANCE } from '../../mock/Data-mock'
 
 const [siteUrl, search] = window.location.href.split('?')
-const id = 12
+const id = parseInt(siteUrl.split('/')[2]) || 12
 const server = 'http://localhost:3000/user/' + id
 const isMocked = search === 'isMocked'
 
@@ -175,10 +175,10 @@ const nameActivity = {
 function performanceFormat(originalData) {
     const { data, kind } = originalData
     const newData = []
-    data.forEach(perf => {
+    data.forEach(performance => {
         newData.push({
-            value: perf.value,
-            kind: nameActivity[kind[perf.kind]]
+            value: performance.value,
+            kind: nameActivity[kind[performance.kind]]
         })
     })
     return newData
@@ -190,7 +190,9 @@ export const getScore = async () => {
         const data = USER_MAIN_DATA.find(user =>
             user.userId === id
         )
-        const newData = scoreFormat({ data: data })
+        const newData = scoreFormat({
+            data: data
+        })
         return newData
     }
     let response

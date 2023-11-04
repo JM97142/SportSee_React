@@ -10,7 +10,7 @@ function UserAverageSessions() {
 
     useEffect(() => {
         fetchAverageSession()
-    })
+    }, [])
 
     async function fetchAverageSession() {
         const averageSessionData = await getAverageSessions()

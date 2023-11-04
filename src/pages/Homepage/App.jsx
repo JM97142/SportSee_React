@@ -15,7 +15,7 @@ import fatIcon from '../../assets/fat-icon.png'
 import Card from '../../components/Card/Card';
 
 function App() {
-  const [user, setUser] = useState()
+  const [user, setUser] = useState([])
 
   useEffect(() => {
     fetchUser()
@@ -28,23 +28,25 @@ function App() {
 
   return (
     <div className='home-body'>
-      <div className='activity-wrapper'>
-        <UserActivity />
-      </div>
-      <div className='average-wrapper'>
-        <UserAverageSessions />
-      </div>
-      <div className='performance-wrapper'>
-        <UserPerformance />
-      </div>
-      <div className='score-wrapper'>
-        <UserScore />
-      </div>
-      <div className='cards-wrapper'>
-        <Card icon={caloriesIcon} unit={user?.calorieCount} type='Calories' />
-        <Card icon={proteinIcon} unit={user?.proteinCount} type='Protéines' />
-        <Card icon={carbsIcon} unit={user?.carbohydrateCount} type='Glucides' />
-        <Card icon={fatIcon} unit={user?.lipidCount} type='Lipides' />
+      <h1>Bonjour</h1>
+      <h2>Félicitations</h2>
+      <div className='-wrapper'>
+        <div className='allstats-wrapper'>
+          <div className='activity-wrapper'>
+            <UserActivity />
+          </div>
+          <div className='stats-wrapper'>
+            <UserAverageSessions />
+            <UserPerformance />
+            <UserScore />
+          </div>
+        </div>
+        <div className='cards-wrapper'>
+          <Card icon={caloriesIcon} unit={user?.calorieCount} type='Calories' />
+          <Card icon={proteinIcon} unit={user?.proteinCount} type='Protéines' />
+          <Card icon={carbsIcon} unit={user?.carbohydrateCount} type='Glucides' />
+          <Card icon={fatIcon} unit={user?.lipidCount} type='Lipides' />
+        </div>
       </div>
     </div>
   )
