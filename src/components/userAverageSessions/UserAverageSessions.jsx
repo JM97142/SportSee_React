@@ -1,9 +1,8 @@
+import './userAverageSessions.css'
 import { useEffect, useState } from "react";
 import { LineChart, Line, XAxis, YAxis, Tooltip, Legend } from 'recharts';
 
 import { getAverageSessions } from "../api/Api";
-
-import './userAverageSessions.css'
 
 function UserAverageSessions() {
     const [userAverageSession, setUserAverageSession] = useState([])

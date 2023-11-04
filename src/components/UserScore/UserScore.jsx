@@ -1,8 +1,8 @@
+import './userScore.css'
 import { useEffect, useState } from "react";
-import { RadialBarChart, RadialBar, Tooltip, Legend } from 'recharts';
+import { RadialBarChart, RadialBar, Legend } from 'recharts';
 
 import { getScore } from "../api/Api";
-import './userScore.css'
 
 function UserScore() {
     const [userScore, setUserScore] = useState([])

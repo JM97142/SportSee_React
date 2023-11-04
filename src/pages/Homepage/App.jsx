@@ -1,7 +1,7 @@
 import './App.css';
 import { useState, useEffect } from 'react';
 // API
-import { getUser } from '../../components/api/Api';
+import { getUser, getUserInfo } from '../../components/api/Api';
 // Components
 import UserActivity from '../../components/UserActivity/UserActivity';
 import UserAverageSessions from '../../components/UserAverageSessions/UserAverageSessions';
@@ -16,6 +16,7 @@ import Card from '../../components/Card/Card';
 
 function App() {
   const [user, setUser] = useState([])
+  const [userInfo, setUserInfo] = useState([])
 
   useEffect(() => {
     fetchUser()
@@ -24,12 +25,14 @@ function App() {
   async function fetchUser() {
     const user = await getUser()
     setUser(user)
+    const userInfo = await getUserInfo()
+    setUserInfo(userInfo)
   }
 
   return (
     <div className='home-body'>
-      <h1>Bonjour</h1>
-      <h2>Félicitations</h2>
+      <h1>Bonjour <span className='user-name'>{userInfo?.firstName}</span></h1>
+      <h2>Félicitations ! Vous avez explosé vos objectifs hier 👏</h2>
       <div className='-wrapper'>
         <div className='allstats-wrapper'>
           <div className='activity-wrapper'>

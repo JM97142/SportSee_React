@@ -1,9 +1,8 @@
+import './userActivity.css'
 import { useEffect, useState } from "react"
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend } from 'recharts';
 // API
 import { getActivity } from "../api/Api"
-
-import './userActivity.css'
 
 function UserActivity() {
     const [userActivity, setUserActivity] = useState([])

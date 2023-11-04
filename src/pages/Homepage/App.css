@@ -5,6 +5,27 @@
   height: 90vh;
 }
 
+.home-body h1 {
+  color: #000;
+  font-size: 48px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 24px;
+  margin-top: 50px;
+}
+
+.user-name {
+  color: #FF0101;
+}
+
+.home-body h2 {
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 24px;
+  margin-bottom: 70px;
+}
+
 .-wrapper {
   display: flex;
   justify-content: space-between;
@@ -16,5 +37,11 @@
 
 .stats-wrapper {
   display: flex;
+  justify-content: space-between;
+}
+
+.cards-wrapper {
+  display: flex;
+  flex-direction: column;
   justify-content: space-between;
 }

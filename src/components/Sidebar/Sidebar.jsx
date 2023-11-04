@@ -1,10 +1,10 @@
+import '../Sidebar/sidebar.css'
 import { Link } from 'react-router-dom'
 
 import iconNav1 from '../../assets/icon-nav1.svg'
 import iconNav2 from '../../assets/icon-nav2.svg'
 import iconNav3 from '../../assets/icon-nav3.svg'
 import iconNav4 from '../../assets/icon-nav4.svg'
-import '../Sidebar/sidebar.css'
 
 function Sidebar() {
     return (
