@@ -22,3 +22,18 @@
 .text-legend {
     color: rgba(116, 121, 140, 1);
 }
+
+.tooltip-activity {
+    padding: 10px;
+    background-color: #E60000;
+
+}
+
+.tooltip-activity p {
+    color: #FFF;
+    text-align: center;
+    font-size: 10px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 24px;
+}

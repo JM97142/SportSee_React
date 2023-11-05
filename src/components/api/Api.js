@@ -1,7 +1,7 @@
 import { USER_MAIN_DATA, USER_ACTIVITY, USER_AVERAGE_SESSIONS, USER_PERFORMANCE } from '../../mock/Data-mock'
 
 const [siteUrl, search] = window.location.href.split('?')
-const id = parseInt(siteUrl.split('/')[2]) || 12
+const id = parseInt(siteUrl.split('/')[2]) || 18
 const server = 'http://localhost:3000/user/' + id
 const isMocked = search === 'isMocked'
 
