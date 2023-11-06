@@ -14,13 +14,9 @@ export const getUser = async () => {
     }
     let response
     let data
-    try {
-        response = await fetch(server)
-        data = await response.json()
-        return data.data.keyData
-    } catch (err) {
-        console.log('Error', err)
-    }
+    response = await fetch(server)
+    data = await response.json()
+    return data.data.keyData
 }
 
 // Récupère User information
@@ -33,13 +29,9 @@ export const getUserInfo = async () => {
     }
     let response
     let data
-    try {
-        response = await fetch(server)
-        data = await response.json()
-        return data.data.userInfos
-    } catch (err) {
-        console.log('Error', err)
-    }
+    response = await fetch(server)
+    data = await response.json()
+    return data.data.userInfos
 }
 
 // Récupère Activity data
@@ -58,19 +50,15 @@ export const getActivity = async () => {
     }
     let response
     let data
-    try {
-        response = await fetch(server + '/activity')
-        data = await response.json()
-        const newData = activityData({
-            sessions: data.data.sessions,
-            day: data.data.sessions.day,
-            kilogrammes: data.data.sessions.kilogram,
-            calories: data.data.sessions.calories
-        })
-        return newData
-    } catch (err) {
-        console.log('Error', err)
-    }
+    response = await fetch(server + '/activity')
+    data = await response.json()
+    const newData = activityData({
+        sessions: data.data.sessions,
+        day: data.data.sessions.day,
+        kilogrammes: data.data.sessions.kilogram,
+        calories: data.data.sessions.calories
+    })
+    return newData
 }
 function activityData(originalData) {
     const { sessions } = originalData
@@ -102,18 +90,14 @@ export const getAverageSessions = async () => {
     }
     let response
     let data
-    try {
-        response = await fetch(server + '/average-sessions')
-        data = await response.json()
-        const newData = daysFormat({
-            sessions: data.data.sessions,
-            day: data.data.sessions.day,
-            sessionLength: data.data.sessions.sessionLength
-        })
-        return newData
-    } catch (err) {
-        console.log('Error', err)
-    }
+    response = await fetch(server + '/average-sessions')
+    data = await response.json()
+    const newData = daysFormat({
+        sessions: data.data.sessions,
+        day: data.data.sessions.day,
+        sessionLength: data.data.sessions.sessionLength
+    })
+    return newData
 }
 const day = {
     1: 'L',
@@ -151,18 +135,14 @@ export const getPerformance = async () => {
     }
     let response
     let data
-    try {
-        response = await fetch(server + '/performance')
-        data = await response.json()
-        const newData = performanceFormat({
-            data: data.data.data,
-            kind: data.data.kind
-        })
-        newData.reverse()
-        return newData
-    } catch (err) {
-        console.log('Error', err)
-    }
+    response = await fetch(server + '/performance')
+    data = await response.json()
+    const newData = performanceFormat({
+        data: data.data.data,
+        kind: data.data.kind
+    })
+    newData.reverse()
+    return newData
 }
 const nameActivity = {
     cardio: 'Cardio',
@@ -197,16 +177,12 @@ export const getScore = async () => {
     }
     let response
     let data
-    try {
-        response = await fetch(server)
-        data = await response.json()
-        const newData = scoreFormat({
-            data: data.data
-        })
-        return newData
-    } catch (err) {
-        console.log('Error', err)
-    }
+    response = await fetch(server)
+    data = await response.json()
+    const newData = scoreFormat({
+        data: data.data
+    })
+    return newData
 }
 function scoreFormat(originalData) {
     const { data } = originalData

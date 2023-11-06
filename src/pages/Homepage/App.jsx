@@ -17,18 +17,31 @@ import Card from '../../components/Card/Card';
 function App() {
   const [user, setUser] = useState([])
   const [userInfo, setUserInfo] = useState([])
+  const [error, setError] = useState(false)
 
   useEffect(() => {
     fetchUser()
   }, [])
 
   async function fetchUser() {
-    const user = await getUser()
-    setUser(user)
-    const userInfo = await getUserInfo()
-    setUserInfo(userInfo)
+    try {
+      const user = await getUser()
+      setUser(user)
+      const userInfo = await getUserInfo()
+      setUserInfo(userInfo)
+    }
+    catch {
+      setError(true)
+    }
   }
 
+  if (error) {
+    return (
+      <div className='error'>
+        <h1>404</h1>
+        <p>Impossible de récupérer les données de l'utilisateur.</p>
+      </div>)
+  }
   return (
     <div className='home-body'>
       <h1>Bonjour <span className='user-name'>{userInfo?.firstName}</span></h1>

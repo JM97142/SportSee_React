@@ -6,14 +6,24 @@ import { getPerformance } from "../api/Api"
 
 function UserPerformance() {
     const [userPerformance, setUserPerformance] = useState([])
+    const [error, setError] = useState(false)
 
     useEffect(() => {
         fetchAverageSession()
     }, [])
 
     async function fetchAverageSession() {
-        const performanceData = await getPerformance()
-        setUserPerformance(performanceData)
+        try {
+            const performanceData = await getPerformance()
+            setUserPerformance(performanceData)
+        }
+        catch {
+            setError(true)
+        }
+    }
+
+    if (error) {
+        return ('Impossible de récupérer les données liées aux performances.')
     }
 
     if (userPerformance.length === 0) return (<></>)

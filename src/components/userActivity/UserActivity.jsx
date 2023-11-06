@@ -4,28 +4,28 @@ import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, Responsive
 // API
 import { getActivity } from "../api/Api"
 
+import { TooltipActivity } from '../Tooltips/Tooltips';
+
 function UserActivity() {
     const [userActivity, setUserActivity] = useState([])
+    const [error, setError] = useState(false)
 
     useEffect(() => {
         fetchActivity()
     }, [])
 
     async function fetchActivity() {
-        const activityData = await getActivity()
-        setUserActivity(activityData)
+        try {
+            const activityData = await getActivity()
+            setUserActivity(activityData)
+        }
+        catch (err) {
+            setError(true)
+        }
     }
 
-    const TooltipActivity = ({ active, payload }) => {
-        if (active && payload && payload.length) {
-            return (
-                <div className='tooltip-activity'>
-                    <p> {`${payload[0].value}kg`}</p>
-                    <p> {`${payload[1].value}kCal`}</p>
-                </div>
-            )
-        }
-        return null
+    if (error) {
+        return ('Impossible de recupérer les données liées à activité.')
     }
 
     return (

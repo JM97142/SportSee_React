@@ -1,31 +1,31 @@
 import './userScore.css'
 import { useEffect, useState } from "react";
 import { RadialBarChart, RadialBar, Legend, ResponsiveContainer } from 'recharts';
-
+// API
 import { getScore } from "../api/Api";
+
+import { LegendScore } from '../Tooltips/Tooltips';
 
 function UserScore() {
     const [userScore, setUserScore] = useState([])
+    const [error, setError] = useState(false)
 
     useEffect(() => {
         fetchScore()
     }, [])
 
     async function fetchScore() {
-        const scoreData = await getScore()
-        setUserScore(scoreData)
-
+        try {
+            const scoreData = await getScore()
+            setUserScore(scoreData)
+        }
+        catch {
+            setError(true)
+        }
     }
 
-    function LegendScore(payload) {
-        return (
-            <div className='legend-score'>
-                <p className='legend-todayscore'>
-                    {payload?.payload[0]?.payload.todayScore}%
-                </p>
-                <p className='legend-content'> de votre objectif</p>
-            </div>
-        )
+    if (error) {
+        return ('Impossible de récupérer les données liées au score.')
     }
 
     return (

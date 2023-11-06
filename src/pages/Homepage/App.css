@@ -46,9 +46,37 @@
   justify-content: space-between;
 }
 
+.error {
+  margin: 20% 0px 0px 15%;
+  padding-left: 30px;
+  width: 80%;
+  height: 90vh;
+  text-align: center;
+}
+
+.error h1 {
+  font-size: 100px;
+  color: #F00;
+  font-weight: 700;
+}
+
+.error p {
+  font-size: 34px;
+  color: #F00;
+}
+
 /* MEDIA QUERIES */
 @media screen and (min-width:1024px) and (max-width: 1280px) {
   .home-body {
     margin: 10% 0px 0px 15%;
+  }
+
+  .stats-wrapper {
+    flex-wrap: wrap;
+    justify-content: flex-start;
+  }
+
+  .cards-wrapper {
+    justify-content: flex-start;
   }
 }

@@ -1,30 +1,31 @@
 import './userAverageSessions.css'
 import { useEffect, useState } from "react";
 import { LineChart, Line, XAxis, YAxis, Tooltip, Legend, ResponsiveContainer } from 'recharts';
-
+// API
 import { getAverageSessions } from "../api/Api";
+
+import { TooltipAverage } from '../Tooltips/Tooltips';
 
 function UserAverageSessions() {
     const [userAverageSession, setUserAverageSession] = useState([])
+    const [error, setError] = useState(false)
 
     useEffect(() => {
         fetchAverageSession()
     }, [])
 
     async function fetchAverageSession() {
-        const averageSessionData = await getAverageSessions()
-        setUserAverageSession(averageSessionData)
+        try {
+            const averageSessionData = await getAverageSessions()
+            setUserAverageSession(averageSessionData)
+        }
+        catch {
+            setError(true)
+        }
     }
 
-    const TooltipAverage = ({ active, payload }) => {
-        if (active && payload && payload.length) {
-            return (
-                <div className='tooltip-average'>
-                    <p> {`${payload[0].value} min`}</p>
-                </div>
-            )
-        }
-        return null
+    if (error) {
+        return ('Impossible de récupérer les données liées à la moyenne des sessions.')
     }
 
     return (
