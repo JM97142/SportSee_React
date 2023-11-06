@@ -1,70 +1,47 @@
-# Getting Started with Create React App
+# SportSee
+> Projet Openclassrooms 12 - Développez un tableau de bord d'analytics avec React
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Resources provided
 
-## Available Scripts
+Lien-maquette-Figma : https://www.figma.com/file/BMomGVZqLZb811mDMShpLu/UI-design-Sportify-FR?node-id=0%3A1
+Lien-Kanban-SportSee :https://www.notion.so/Tableau-de-bord-SportSee-6686aa4b5f44417881a4884c9af5669e
 
-In the project directory, you can run:
+## Installation
 
-### `npm start`
+### Prerequisites
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+- npm
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+- NodeJs
 
-### `npm test`
+- VSCode
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### Installing and launching Back-End
 
-### `npm run build`
+Clone the Back-End:
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+`git clone https://github.com/OpenClassrooms-Student-Center/P9-front-end-dashboard`
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+Inside this back-end repository, install dependencies:
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+`yarn`
 
-### `npm run eject`
+Back-end launch on port 3000 (default port):
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+`yarn dev`
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+### Installing and launching Front-end
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+Clone the repository of SportSee Front-End:
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+`git clone https://github.com/JM97142/SportSee_React`
 
-## Learn More
+Install dependencies:
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+`npm install`
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+Lauch Front-End on port 3001:
 
-### Code Splitting
+`npm start` and `y`
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Front-End launch at URL `http://localhost:3001`
