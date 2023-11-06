@@ -1,6 +1,6 @@
 import './userScore.css'
 import { useEffect, useState } from "react";
-import { RadialBarChart, RadialBar, Legend } from 'recharts';
+import { RadialBarChart, RadialBar, Legend, ResponsiveContainer } from 'recharts';
 
 import { getScore } from "../api/Api";
 
@@ -31,21 +31,23 @@ function UserScore() {
     return (
         <div className="score-graph">
             <h3>Score</h3>
-            <RadialBarChart
-                width={258}
-                height={263}
-                data={userScore}
-                innerRadius={70}
-                barSize={10}
-                outerRadius={120}
-                startAngle={90}
-                endAngle={500}
-                cx={107}
-                cy={120}
-            >
-                <RadialBar cornerRadius='50%' fill='#E60000' dataKey='todayScore' />
-                <Legend content={<LegendScore />} />
-            </RadialBarChart>
+            <ResponsiveContainer width='100%' height='100%'>
+                <RadialBarChart
+                    width='100%'
+                    height='100%'
+                    data={userScore}
+                    innerRadius={70}
+                    barSize={10}
+                    outerRadius={120}
+                    startAngle={90}
+                    endAngle={500}
+                    cx={107}
+                    cy={120}
+                >
+                    <RadialBar cornerRadius='50%' fill='#E60000' dataKey='todayScore' />
+                    <Legend content={<LegendScore />} />
+                </RadialBarChart>
+            </ResponsiveContainer>
         </div>
     )
 }

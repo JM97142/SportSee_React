@@ -1,4 +1,6 @@
 .activity-graph {
+    width: 835px;
+    height: 320px;
     background-color: rgba(251, 251, 251, 1);
     padding: 50px 20px 0px 20px;
     position: relative;
@@ -36,4 +38,12 @@
     font-style: normal;
     font-weight: 500;
     line-height: 24px;
+}
+
+/* MEDIA QUERIES */
+@media screen and (min-width:1024px) and (max-width: 1280px) {
+    .activity-graph {
+        width: 550px;
+        height: 250px;
+    }
 }

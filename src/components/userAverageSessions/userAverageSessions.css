@@ -34,3 +34,15 @@
     font-weight: 700;
     line-height: 24px;
 }
+
+/* MEDIA QUERIES */
+@media screen and (min-width:1024px) and (max-width: 1280px) {
+    .average-graph {
+        width: 150px;
+        height: 150px;
+    }
+
+    .average-graph h3 {
+        font-size: 10px;
+    }
+}

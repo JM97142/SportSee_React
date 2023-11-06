@@ -3,7 +3,7 @@
     align-items: center;
     justify-content: center;
     width: 258px;
-    height: 124px;
+    height: 140px;
     margin-bottom: 40px;
     border-radius: 5px;
     background-color: #FBFBFB;
@@ -11,8 +11,8 @@
 }
 
 .card-icon img {
-    width: 60px;
-    height: 60px;
+    width: 80px;
+    height: 80px;
     margin-right: 10px;
 }
 
@@ -31,4 +31,12 @@
     font-style: normal;
     font-weight: 500;
     margin-top: 0;
+}
+
+/* MEDIA QUERIES */
+@media screen and (min-width:1024px) and (max-width: 1280px) {
+    .card {
+        width: 200px;
+        height: 95px;
+    }
 }

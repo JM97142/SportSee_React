@@ -1,5 +1,5 @@
 .home-body {
-  margin: 0px 0px 0px 10%;
+  margin: 10% 0px 0px 15%;
   padding-left: 30px;
   width: 80%;
   height: 90vh;
@@ -44,4 +44,11 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+}
+
+/* MEDIA QUERIES */
+@media screen and (min-width:1024px) and (max-width: 1280px) {
+  .home-body {
+    margin: 10% 0px 0px 15%;
+  }
 }
