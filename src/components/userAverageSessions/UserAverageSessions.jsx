@@ -2,7 +2,7 @@ import './userAverageSessions.css'
 import { useEffect, useState } from "react";
 import { LineChart, Line, XAxis, YAxis, Tooltip, Legend, ResponsiveContainer } from 'recharts';
 // API
-import { getAverageSessions } from "../api/Api";
+import { getAverageSessions } from "../../api/Api";
 
 import { TooltipAverage } from '../Tooltips/Tooltips';
 

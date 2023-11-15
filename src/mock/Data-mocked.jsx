@@ -1,41 +1,28 @@
-import { USER_MAIN_DATA, USER_ACTIVITY, USER_AVERAGE_SESSIONS, USER_PERFORMANCE } from '../../mock/Data-mock'
+import { USER_MAIN_DATA, USER_ACTIVITY, USER_AVERAGE_SESSIONS, USER_PERFORMANCE } from '../mock/Data-mock'
 
 const [siteUrl, search] = window.location.href.split('?')
-const id = parseInt(siteUrl.split('/')[2]) || 12
-const server = 'http://localhost:3000/user/' + id
+const id = parseInt(siteUrl.split('/')[4]) || 12
 const isMocked = search === 'isMocked'
 
-export const getUser = async () => {
+export const getUserMocked = async () => {
     if (isMocked) {
         const data = USER_MAIN_DATA.find(user =>
             user.userId === id
         )
         return data.keyData
     }
-    let response
-    let data
-    response = await fetch(server)
-    data = await response.json()
-    return data.data.keyData
 }
 
-// Récupère User information
-export const getUserInfo = async () => {
+export const getUserInfoMocked = async () => {
     if (isMocked) {
         const data = USER_MAIN_DATA.find(user =>
             user.userId === id
         )
         return data.userInfos
     }
-    let response
-    let data
-    response = await fetch(server)
-    data = await response.json()
-    return data.data.userInfos
 }
 
-// Récupère Activity data
-export const getActivity = async () => {
+export const getActivityMocked = async () => {
     if (isMocked) {
         const data = USER_ACTIVITY.find(user =>
             user.userId === id
@@ -48,17 +35,6 @@ export const getActivity = async () => {
         })
         return newData
     }
-    let response
-    let data
-    response = await fetch(server + '/activity')
-    data = await response.json()
-    const newData = activityData({
-        sessions: data.data.sessions,
-        day: data.data.sessions.day,
-        kilogrammes: data.data.sessions.kilogram,
-        calories: data.data.sessions.calories
-    })
-    return newData
 }
 function activityData(originalData) {
     const { sessions } = originalData
@@ -75,8 +51,7 @@ function activityData(originalData) {
     return newData
 }
 
-// Récupère Average sessions data
-export const getAverageSessions = async () => {
+export const getAverageMocked = async () => {
     if (isMocked) {
         const data = USER_AVERAGE_SESSIONS.find(user =>
             user.userId === id
@@ -88,16 +63,6 @@ export const getAverageSessions = async () => {
         })
         return newData
     }
-    let response
-    let data
-    response = await fetch(server + '/average-sessions')
-    data = await response.json()
-    const newData = daysFormat({
-        sessions: data.data.sessions,
-        day: data.data.sessions.day,
-        sessionLength: data.data.sessions.sessionLength
-    })
-    return newData
 }
 const day = {
     1: 'L',
@@ -120,8 +85,7 @@ function daysFormat(originalData) {
     return newData
 }
 
-// Récupère Performance data
-export const getPerformance = async () => {
+export const getPerfMocked = async () => {
     if (isMocked) {
         const data = USER_PERFORMANCE.find(user =>
             user.userId === id
@@ -133,16 +97,6 @@ export const getPerformance = async () => {
         newData.reverse()
         return newData
     }
-    let response
-    let data
-    response = await fetch(server + '/performance')
-    data = await response.json()
-    const newData = performanceFormat({
-        data: data.data.data,
-        kind: data.data.kind
-    })
-    newData.reverse()
-    return newData
 }
 const nameActivity = {
     cardio: 'Cardio',
@@ -164,8 +118,7 @@ function performanceFormat(originalData) {
     return newData
 }
 
-// Récupère Score data
-export const getScore = async () => {
+export const getScoreMocked = async () => {
     if (isMocked) {
         const data = USER_MAIN_DATA.find(user =>
             user.userId === id
@@ -175,14 +128,6 @@ export const getScore = async () => {
         })
         return newData
     }
-    let response
-    let data
-    response = await fetch(server)
-    data = await response.json()
-    const newData = scoreFormat({
-        data: data.data
-    })
-    return newData
 }
 function scoreFormat(originalData) {
     const { data } = originalData

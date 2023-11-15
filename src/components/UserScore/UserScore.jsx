@@ -2,7 +2,7 @@ import './userScore.css'
 import { useEffect, useState } from "react";
 import { RadialBarChart, RadialBar, Legend, ResponsiveContainer } from 'recharts';
 // API
-import { getScore } from "../api/Api";
+import { getScore } from "../../api/Api";
 
 import { LegendScore } from '../Tooltips/Tooltips';
 

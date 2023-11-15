@@ -3,8 +3,8 @@
 
 ## Resources provided
 
-Lien-maquette-Figma : https://www.figma.com/file/BMomGVZqLZb811mDMShpLu/UI-design-Sportify-FR?node-id=0%3A1
-Lien-Kanban-SportSee :https://www.notion.so/Tableau-de-bord-SportSee-6686aa4b5f44417881a4884c9af5669e
+- Lien-maquette-Figma : https://www.figma.com/file/BMomGVZqLZb811mDMShpLu/UI-design-Sportify-FR?node-id=0%3A1
+- Lien-Kanban-SportSee :https://www.notion.so/Tableau-de-bord-SportSee-6686aa4b5f44417881a4884c9af5669e
 
 ## Installation
 

@@ -2,7 +2,7 @@ import './userPerformance.css'
 import { useEffect, useState } from "react"
 import { Radar, RadarChart, PolarGrid, PolarAngleAxis, Legend, ResponsiveContainer } from 'recharts';
 
-import { getPerformance } from "../api/Api"
+import { getPerformance } from "../../api/Api"
 
 function UserPerformance() {
     const [userPerformance, setUserPerformance] = useState([])
