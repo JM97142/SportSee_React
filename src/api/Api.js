@@ -1,36 +1,59 @@
+import { USER_MAIN_DATA, USER_ACTIVITY, USER_AVERAGE_SESSIONS, USER_PERFORMANCE } from '../mock/Data-mock'
+
 const id = 12
 const server = 'http://localhost:3000/user/' + id
 
 export const getUser = async () => {
-    let response
-    let data
-    response = await fetch(server)
-    data = await response.json()
-    return data.data.keyData
+    try {
+        const response = await fetch(server)
+        const data = await response.json()
+        return data.data.keyData
+    } catch {
+        const data = USER_MAIN_DATA.find(user =>
+            user.id === id
+        )
+        return data.keyData
+    }
 }
 
 // Récupère User information
 export const getUserInfo = async () => {
-    let response
-    let data
-    response = await fetch(server)
-    data = await response.json()
-    return data.data.userInfos
+    try {
+        const response = await fetch(server)
+        const data = await response.json()
+        return data.data.userInfos
+    } catch {
+        const data = USER_MAIN_DATA.find(user =>
+            user.id === id
+        )
+        return data.userInfos
+    }
 }
 
 // Récupère Activity data
 export const getActivity = async () => {
-    let response
-    let data
-    response = await fetch(server + '/activity')
-    data = await response.json()
-    const newData = activityData({
-        sessions: data.data.sessions,
-        day: data.data.sessions.day,
-        kilogrammes: data.data.sessions.kilogram,
-        calories: data.data.sessions.calories
-    })
-    return newData
+    try {
+        const response = await fetch(server + '/activity')
+        const data = await response.json()
+        const newData = activityData({
+            sessions: data.data.sessions,
+            day: data.data.sessions.day,
+            kilogrammes: data.data.sessions.kilogram,
+            calories: data.data.sessions.calories
+        })
+        return newData
+    } catch {
+        const data = USER_ACTIVITY.find(user =>
+            user.userId === id
+        )
+        const newData = activityData({
+            sessions: data.sessions,
+            day: data.sessions.day,
+            kilogram: data.sessions.kilogram,
+            calories: data.sessions.calories
+        })
+        return newData
+    }
 }
 function activityData(originalData) {
     const { sessions } = originalData
@@ -49,16 +72,26 @@ function activityData(originalData) {
 
 // Récupère Average sessions data
 export const getAverageSessions = async () => {
-    let response
-    let data
-    response = await fetch(server + '/average-sessions')
-    data = await response.json()
-    const newData = daysFormat({
-        sessions: data.data.sessions,
-        day: data.data.sessions.day,
-        sessionLength: data.data.sessions.sessionLength
-    })
-    return newData
+    try {
+        const response = await fetch(server + '/average-sessions')
+        const data = await response.json()
+        const newData = daysFormat({
+            sessions: data.data.sessions,
+            day: data.data.sessions.day,
+            sessionLength: data.data.sessions.sessionLength
+        })
+        return newData
+    } catch {
+        const data = USER_AVERAGE_SESSIONS.find(user =>
+            user.userId === id
+        )
+        const newData = daysFormat({
+            sessions: data.sessions,
+            day: data.sessions.day,
+            sessionLength: data.sessions.sessionLength
+        })
+        return newData
+    }
 }
 const day = {
     1: 'L',
@@ -83,16 +116,26 @@ function daysFormat(originalData) {
 
 // Récupère Performance data
 export const getPerformance = async () => {
-    let response
-    let data
-    response = await fetch(server + '/performance')
-    data = await response.json()
-    const newData = performanceFormat({
-        data: data.data.data,
-        kind: data.data.kind
-    })
-    newData.reverse()
-    return newData
+    try {
+        const response = await fetch(server + '/performance')
+        const data = await response.json()
+        const newData = performanceFormat({
+            data: data.data.data,
+            kind: data.data.kind
+        })
+        newData.reverse()
+        return newData
+    } catch {
+        const data = USER_PERFORMANCE.find(user =>
+            user.userId === id
+        )
+        const newData = performanceFormat({
+            data: data.data,
+            kind: data.kind
+        })
+        newData.reverse()
+        return newData
+    }
 }
 const nameActivity = {
     cardio: 'Cardio',
@@ -116,14 +159,22 @@ function performanceFormat(originalData) {
 
 // Récupère Score data
 export const getScore = async () => {
-    let response
-    let data
-    response = await fetch(server)
-    data = await response.json()
-    const newData = scoreFormat({
-        data: data.data
-    })
-    return newData
+    try {
+        const response = await fetch(server)
+        const data = await response.json()
+        const newData = scoreFormat({
+            data: data.data
+        })
+        return newData
+    } catch {
+        const data = USER_MAIN_DATA.find(user =>
+            user.id === id
+        )
+        const newData = scoreFormat({
+            data: data
+        })
+        return newData
+    }
 }
 function scoreFormat(originalData) {
     const { data } = originalData

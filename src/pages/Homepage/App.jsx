@@ -7,9 +7,6 @@ import UserActivity from '../../components/UserActivity/UserActivity';
 import UserAverageSessions from '../../components/UserAverageSessions/UserAverageSessions';
 import UserPerformance from '../../components/UserPerformance/UserPerformance';
 import UserScore from '../../components/UserScore/UserScore';
-// Mock
-import { getUserMocked } from '../../mock/Data-mocked';
-import { getUserInfoMocked } from '../../mock/Data-mocked';
 
 import caloriesIcon from '../../assets/calories-icon.png'
 import proteinIcon from '../../assets/protein-icon.png'
@@ -19,9 +16,7 @@ import Card from '../../components/Card/Card';
 
 function App() {
   const [user, setUser] = useState([])
-  const [userMocked, setUserMocked] = useState([])
   const [userInfo, setUserInfo] = useState([])
-  const [userInfoMocked, setUserInfoMocked] = useState([])
   const [error, setError] = useState(false)
 
   useEffect(() => {
@@ -34,11 +29,6 @@ function App() {
       setUser(user)
       const userInfo = await getUserInfo()
       setUserInfo(userInfo)
-      // mock
-      const userMocked = await getUserMocked()
-      setUserMocked(userMocked)
-      const userInfoMocked = await getUserInfoMocked()
-      setUserInfoMocked(userInfoMocked)
     }
     catch {
       setError(true)
@@ -54,7 +44,7 @@ function App() {
   }
   return (
     <div className='home-body'>
-      <h1>Bonjour <span className='user-name'>{userInfo ? userInfo.firstName : userInfoMocked.firstName}</span></h1>
+      <h1>Bonjour <span className='user-name'>{userInfo?.firstName}</span></h1>
       <h2>Félicitations ! Vous avez explosé vos objectifs hier 👏</h2>
       <div className='-wrapper'>
         <div className='allstats-wrapper'>
@@ -68,10 +58,10 @@ function App() {
           </div>
         </div>
         <div className='cards-wrapper'>
-          <Card icon={caloriesIcon} unit={user ? user.calorieCount : userMocked.calorieCount} type='Calories' />
-          <Card icon={proteinIcon} unit={user ? user.proteinCount : userMocked.proteinCount} type='Protéines' />
-          <Card icon={carbsIcon} unit={user ? user.carbohydrateCount : userMocked.carbohydrateCount} type='Glucides' />
-          <Card icon={fatIcon} unit={user ? user.lipidCount : userMocked.lipidCount} type='Lipides' />
+          <Card icon={caloriesIcon} unit={user?.calorieCount} type='Calories' />
+          <Card icon={proteinIcon} unit={user?.proteinCount} type='Protéines' />
+          <Card icon={carbsIcon} unit={user?.carbohydrateCount} type='Glucides' />
+          <Card icon={fatIcon} unit={user?.lipidCount} type='Lipides' />
         </div>
       </div>
     </div>
