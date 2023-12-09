@@ -12,7 +12,7 @@ export const getUser = async () => {
         const data = USER_MAIN_DATA.find(user =>
             user.id === id
         )
-        alert("Impossible d'accéder à l'API", err)
+        alert("Impossible d'accéder à l'API")
         console.log('Error', err)
         return data.keyData
     }
