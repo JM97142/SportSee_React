@@ -1,51 +1,31 @@
 import { USER_MAIN_DATA, USER_ACTIVITY, USER_AVERAGE_SESSIONS, USER_PERFORMANCE } from '../mock/Data-mock'
 
 const id = 12
-const server = 'http://localhost:3000/user/' + id
 
 export const getUser = async () => {
     try {
-        const response = await fetch(server)
-        const data = await response.json()
-        return data.data.keyData
-    } catch (err) {
         const data = USER_MAIN_DATA.find(user =>
             user.id === id
         )
-        alert("Impossible d'accéder à l'API", err)
-        console.log('Error', err)
         return data.keyData
+    } catch {
     }
 }
 
 // Récupère User information
 export const getUserInfo = async () => {
     try {
-        const response = await fetch(server)
-        const data = await response.json()
-        return data.data.userInfos
-    } catch (err) {
         const data = USER_MAIN_DATA.find(user =>
             user.id === id
         )
-        console.log('Error', err)
         return data.userInfos
+    } catch {
     }
 }
 
 // Récupère Activity data
 export const getActivity = async () => {
     try {
-        const response = await fetch(server + '/activity')
-        const data = await response.json()
-        const newData = activityData({
-            sessions: data.data.sessions,
-            day: data.data.sessions.day,
-            kilogrammes: data.data.sessions.kilogram,
-            calories: data.data.sessions.calories
-        })
-        return newData
-    } catch (err) {
         const data = USER_ACTIVITY.find(user =>
             user.userId === id
         )
@@ -55,8 +35,8 @@ export const getActivity = async () => {
             kilogram: data.sessions.kilogram,
             calories: data.sessions.calories
         })
-        console.log('Error', err)
         return newData
+    } catch {
     }
 }
 function activityData(originalData) {
@@ -77,15 +57,6 @@ function activityData(originalData) {
 // Récupère Average sessions data
 export const getAverageSessions = async () => {
     try {
-        const response = await fetch(server + '/average-sessions')
-        const data = await response.json()
-        const newData = daysFormat({
-            sessions: data.data.sessions,
-            day: data.data.sessions.day,
-            sessionLength: data.data.sessions.sessionLength
-        })
-        return newData
-    } catch (err) {
         const data = USER_AVERAGE_SESSIONS.find(user =>
             user.userId === id
         )
@@ -94,8 +65,8 @@ export const getAverageSessions = async () => {
             day: data.sessions.day,
             sessionLength: data.sessions.sessionLength
         })
-        console.log('Error', err)
         return newData
+    } catch {
     }
 }
 const day = {
@@ -122,15 +93,6 @@ function daysFormat(originalData) {
 // Récupère Performance data
 export const getPerformance = async () => {
     try {
-        const response = await fetch(server + '/performance')
-        const data = await response.json()
-        const newData = performanceFormat({
-            data: data.data.data,
-            kind: data.data.kind
-        })
-        newData.reverse()
-        return newData
-    } catch (err) {
         const data = USER_PERFORMANCE.find(user =>
             user.userId === id
         )
@@ -139,8 +101,8 @@ export const getPerformance = async () => {
             kind: data.kind
         })
         newData.reverse()
-        console.log('Error', err)
         return newData
+    } catch {
     }
 }
 const nameActivity = {
@@ -166,21 +128,14 @@ function performanceFormat(originalData) {
 // Récupère Score data
 export const getScore = async () => {
     try {
-        const response = await fetch(server)
-        const data = await response.json()
-        const newData = scoreFormat({
-            data: data.data
-        })
-        return newData
-    } catch (err) {
         const data = USER_MAIN_DATA.find(user =>
             user.id === id
         )
         const newData = scoreFormat({
             data: data
         })
-        console.log('Error', err)
         return newData
+    } catch {
     }
 }
 function scoreFormat(originalData) {
