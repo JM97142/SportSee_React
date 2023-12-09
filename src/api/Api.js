@@ -3,6 +3,7 @@ import { USER_MAIN_DATA, USER_ACTIVITY, USER_AVERAGE_SESSIONS, USER_PERFORMANCE 
 const id = 12
 const server = 'http://localhost:3000/user/' + id
 
+// Récupère User keydata
 export const getUser = async () => {
     try {
         const response = await fetch(server)
@@ -12,7 +13,7 @@ export const getUser = async () => {
         const data = USER_MAIN_DATA.find(user =>
             user.id === id
         )
-        alert("Impossible d'accéder à l'API")
+        alert("Impossible d'accéder aux données via l'API", err)
         console.log('Error', err)
         return data.keyData
     }
@@ -59,6 +60,7 @@ export const getActivity = async () => {
         return newData
     }
 }
+// Formttage activity data
 function activityData(originalData) {
     const { sessions } = originalData
     const newData = []
@@ -98,6 +100,7 @@ export const getAverageSessions = async () => {
         return newData
     }
 }
+// Formattage sessions data
 const day = {
     1: 'L',
     2: 'M',
@@ -143,6 +146,7 @@ export const getPerformance = async () => {
         return newData
     }
 }
+// Formattage performance data
 const nameActivity = {
     cardio: 'Cardio',
     energy: 'Energie',
@@ -183,6 +187,7 @@ export const getScore = async () => {
         return newData
     }
 }
+// Formattage score data
 function scoreFormat(originalData) {
     const { data } = originalData
     let score
